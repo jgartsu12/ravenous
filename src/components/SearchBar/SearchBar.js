@@ -6,7 +6,7 @@ const sortByOptions = {
     'Highest Rated': 'rating',
     'Most Reviewed': 'review_count'
 };
-
+// eslint-disable-next-line 
 class SearchBar extends React.Component {
 
     // method to build structure of search bar comp - iterates through options in obj //
@@ -30,9 +30,10 @@ class SearchBar extends React.Component {
                     <input placeholder="Where?" />
                 </div>
                 <div className="SearchBar-submit">
-                    <a>Let's Go</a>
+                
+                    {/* <a>Let's Go</a> */}
                 </div>
-                </div>
+            </div>
         );
     };
 };
