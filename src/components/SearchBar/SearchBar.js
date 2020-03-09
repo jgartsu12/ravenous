@@ -8,7 +8,14 @@ const sortByOptions = {
 };
 // eslint-disable-next-line 
 class SearchBar extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.state = ({
+            term: '',
+            location: '',
+            sortBy: 'best_match'
+        });
+    }
     // method to build structure of search bar comp - iterates through options in obj //
     renderSortByOptions() {
         return Object.keys(sortByOptions).map(sortByOption => {
