@@ -6,13 +6,15 @@ import SearchBar from '../SearchBar/SearchBar';
 
 
 export default class App extends Component {
-  return (
-    <div className="App">
-      <h1>ravenous</h1>
-        <SearchBar />
-        <BusinessList/>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <h1>ravenous</h1>
+          <SearchBar />
+          <BusinessList/>
+      </div>
+    );
+  };
 };
 
 
