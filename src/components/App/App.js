@@ -25,7 +25,7 @@ const businesses = [
   business
 ];
 
-export default class App extends Component {
+class App extends Component {
   
   searchYelp(term, location, sortBy) {
     console.log(`Searching Yelp with ${term}, ${location}, and ${sortBy}`)
@@ -39,7 +39,7 @@ export default class App extends Component {
           <BusinessList businesses={businesses}/>
       </div>
     );
-  };
-};
+  }
+}
 
-
+export default App;
