@@ -2,11 +2,8 @@
 const apiKey = '1mDheiPL7ikeHum5KhQuxhCgrL8ka7d62fBGhk0wNRcbwZEMfHUS5cwUMV80UX0CKhp_DmLnlVGf70ikv0vGisGXkNUCrd0QQ8PgmI2LlejLS6viGd_v2ilIBxBpXnYx';
 
 const Yelp = {
-    
-};
-
-const search = async (term, location, sortBy) => {
-        return await fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
+    search(term, location, sortBy) {
+        return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
             headers: {
                 Authorization: `Bearer ${apiKey}`
             }
@@ -14,19 +11,22 @@ const search = async (term, location, sortBy) => {
             return response.json();
         }).then(jsonResponse => {
             if(jsonResponse.businesses) {
-            return jsonResponse.businesses.map(business => {
-                id: business.id,
-                imageSrc: business.image_url,
-                name: business.name,
-                address: business.address,
-                city: business.city,
-                state: business.state,
-                zipCode: business.zipCode,
-                category: business.category,
-                rating: business.rating,
-                reviewCount: business.reviewCount
-            });
+                return jsonResponse.businesses.map(business => ({
+                    id: business.id,
+                    imageSrc: business.image_url,
+                    name: business.name,
+                    address: business.location.address1,
+                    city: business.location.city,
+                    state: business.location.state,
+                    zipCode: business.location.zipCode,
+                    category: business.categorie[0].title,
+                    rating: business.rating,
+                    reviewCount: business.review_count
+                }));
             }
         })
+    }
+};
 
-export.modules.Yelp;
+
+export default Yelp;
